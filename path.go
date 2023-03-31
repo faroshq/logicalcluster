@@ -48,7 +48,8 @@ const (
 // │   └── us-west          (33bab531)
 // │       └── invoices     (f5865fce)
 // └── management           (e7e08986)
-//     └── us-west-invoices (f5865fce)
+//
+//	└── us-west-invoices (f5865fce)
 //
 // the following would all be valid paths:
 //
@@ -86,9 +87,6 @@ func (p Path) Empty() bool {
 func (p Path) Name() (Name, bool) {
 	if strings.HasPrefix(p.value, "system:") {
 		return Name(p.value), true
-	}
-	if _, hasParent := p.Parent(); hasParent {
-		return "", false
 	}
 	return Name(p.value), true
 }
